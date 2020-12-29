@@ -1,0 +1,8 @@
+# Install openssh
+sudo pacman -Sy openssh
+
+# Run the SSH daemon
+sudo systemctl enable sshd
+sudo systemctl start sshd
+
+

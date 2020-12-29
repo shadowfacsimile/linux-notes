@@ -36,3 +36,10 @@ sudo wpa_supplicant -B -i wlp2s0 -c /etc/wpa_supplicant/wpa_supplicant_wlp2s0.co
 sudo wpa_cli
 scan
 [if it fails, make sure wifi is on by using function keys]
+
+# To enable wifi during boot
+sudo systemctl enable wpa_supplicant@wlp2s0.service
+sudo systemctl start wpa_supplicant@wlp2s0.service
+reboot
+
+
