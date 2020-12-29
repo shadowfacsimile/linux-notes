@@ -1,0 +1,13 @@
+# To enable sound we need alsamixer
+pacman -S alsa-utils
+
+# Update the asoundconf in /etc/asound.conf or ~/.asoundrc
+vim ~/.asoundrc
+defaults.ctl.card PCH
+defaults.pcm.card PCH
+
+# set-default-card
+asoundconf set-default-card PCH
+
+# Open alsamixer and set the sound
+alsamixer

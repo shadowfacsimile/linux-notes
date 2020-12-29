@@ -1,0 +1,38 @@
+# To show all the network connections
+ip link show
+
+# To bring up wlp2s0
+sudo ip link set dev wlp2s0 up
+
+// For ethernet to work NetworkManager should be up
+systemctl enable NetworkManager
+systemctl start NetworkManager
+
+// For wireless to work NetworkManager should be down
+systemctl disable NetworkManager
+systemctl stop NetworkManager
+
+# wpa_supplicant auth for wifi
+sudo wpa_supplicant -B -i wlp2s0 -c /etc/wpa_supplicant/wpa_supplicant_wlp2s0.conf
+
+// PSK can be added by using the wpa_passphrase utility and appending the output to the conf file
+
+# wpa_cli
+sudo wpa_cli
+
+// Make sure the wifi function key is working
+
+# To bring up dhcpcd
+sudo systemctl enable dhcpcd
+sudo systemctl start dhcpcd
+
+// Some files I've changed
+   - /etc/NetworkManager/NetworkManager.conf
+   - /etc/NetworkManager/conf.d/90-disable-randomization.conf
+   - /etc/NetworkManager/conf.d/broadcom_wl.conf
+
+# Now the steps I follow to bring up wifi
+sudo wpa_supplicant -B -i wlp2s0 -c /etc/wpa_supplicant/wpa_supplicant_wlp2s0.conf
+sudo wpa_cli
+scan
+[if it fails, make sure wifi is on by using function keys]
