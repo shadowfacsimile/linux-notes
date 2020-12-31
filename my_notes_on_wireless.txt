@@ -43,3 +43,18 @@ sudo systemctl start wpa_supplicant@wlp2s0.service
 reboot
 
 
+# Troubleshooting when an kernel update (?) screwed my wifi and the wireless shows up as "UNCLAIMED"
+
+sudo lshw -C network  // shows only the network hardware
+sudo pacman -Syu broadcom-wl-dkms
+sudo dkms remove broadcom-wl/6.30.223.271 --all
+sudo dkms add broadcom-wl/6.30.223.271
+sudo dkms build broadocom-wl/6.30.223.271
+-- started giving a build error, so I removed all broadcom-wl-dkms and installed broadcom-wl instead
+
+sudo pacman -Rns broadcom-wl-dkms
+yay -Rns broadcom-wl-dkms
+sudo pacman -Sy broadcom-wl
+
+-- now it works!
+

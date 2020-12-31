@@ -1,0 +1,37 @@
+
+# failed systemd services
+sudo systemctl --failed
+
+# check the journal logs
+sudo journalctl -p 3 -xb
+
+# update arch packages
+sudo pacman -Syyu
+
+# update yay packages
+yay -Syyu
+
+# cleanup the pacman cache
+sudo pacman -Sc
+
+# cleanup the yay cache
+yay -Sc
+
+# remove unwanted yay dependency
+yay -yc
+
+# remove orphan packages
+sudo pacman -Rns $(pacman -Qtdq)
+
+# remove files from .cache
+du -sh ~/.cache
+rm -rf ~/.cache/*
+
+# remove files from journal folder
+du -sh /var/log/journal
+sudo journalctl --vacuum-time=1week
+
+# refresh the mirrorlist
+sudo reflector -c Germany -l 5 -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+
+
