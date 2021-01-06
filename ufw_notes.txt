@@ -1,0 +1,14 @@
+ufw enable
+ufw status
+ufw status numbered
+
+ufw default deny incoming
+ufw default allow outgoing
+
+ufw allow 22/tcp
+-or-
+ufw allow ssh
+-or-
+ufw limit 22/tcp
+
+ufw reload

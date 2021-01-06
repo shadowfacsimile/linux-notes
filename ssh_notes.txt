@@ -5,4 +5,41 @@ sudo pacman -Sy openssh
 sudo systemctl enable sshd
 sudo systemctl start sshd
 
+# To generate SSH keys on the client (ex: termux on mobile)
+ssh-keygen -t rsa -b 4096 -C "my_key"
 
+# Generates public (id_rsa.pub) and private keys (id_rsa)
+
+# Copy the public key to the authorized_keys folder on the server
+cat id_rsa.pub | ssh user@192.1.2.2 "cat >> ~/.ssh/authorized_keys"
+
+# Login to the server using ssh
+ssh user@192.1.2.2
+
+# To open incoming SSH request on the ufw
+ufw allow ssh
+ufw reload
+
+# If you want to use a different port for SSH and not 22
+sudo vim /etc/ssh/sshd_config
+Port 1000
+
+# Changes the firewall config
+ufw allow 1000/tcp
+ufw reload
+
+#######
+Note that running SSH on a port over 1024 (i.e. a non-priveleged port) is actually potentially a security vulnerability. Only root can bind to privileged ports (<1024), so you can know that services running here are at least started by root. Let's say you run SSH on port 2222 and your sshd crashes for some reason. Now any local user can start their own (fake) sshd on port 2222 which might do bad things like stealing your password!
+#######
+
+# Using rsync to copy from client to server where SSH is on a different port
+rsync -v -e 'ssh -p 1000' file.txt user@192.1.2.2:~/
+
+# Using scp to copy from client to server where SSH is on a different port
+scp -P 1000 file.txt user@192.1.2.2:~/
+
+# To disallow root login to the server edit - /etc/ssh/sshd_config
+PermitRootLogin no
+
+# To use only key based long and prevent password login - /etc/ssh/sshd_config
+PasswordAuthentication no
