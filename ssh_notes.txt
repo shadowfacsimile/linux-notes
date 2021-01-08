@@ -47,7 +47,7 @@ PasswordAuthentication no
 
 # To use ssh with git
 1. Generate ssh key pair using ssh-keygen
-2. If you're using a different name for the keys ex: id_rsa_git then add the keys using - ssh-add ~/.ssh/id_rsa_git
+2. If you're using a different name for the keys ex - id_rsa_git then add the keys using - ssh-add ~/.ssh/id_rsa_git
 3. For ssh-add to work the ssh-agent needs to be up - eval `ssh-agent -s`
 4. Copy the public key and add it to your github account SSH key list
 5. To test the connection - ssh -vT git@github.com
