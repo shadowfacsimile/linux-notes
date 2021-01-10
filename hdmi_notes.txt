@@ -1,0 +1,16 @@
+
+# HDMI video output for Intel Graphics Controller
+
+# Add an entry in the /etc/X11/xorg.conf.d/20-intel.conf and reboot
+Section "Device"
+	Identifier "Intel Graphics"
+	Driver "intel"
+EndSection
+
+
+# HDMI audio output
+
+# Add an entry in the ~/.asoundrc and reboot
+defaults.pcm.device 3
+
+[The device number can be fetched by running aplay -l]
