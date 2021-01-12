@@ -1,0 +1,39 @@
+# start transmission-daemon
+transmission-daemon
+
+# add torrent
+transmission-remote -a 'magnet_link'
+
+# status of torrent
+transmission-remote -l
+
+#######################################
+
+# check the number of jails setup in fail2ban
+sudo fail2ban-client status
+
+# check the banned IPs for ex - ssh access bans
+sudo fail2ban-client status ssh
+
+#######################################
+
+# enabling and check ufw status
+ufw enable
+ufw status
+ufw status numbered
+
+# deny all incoming and allow all outgoing
+ufw default deny incoming
+ufw default allow outgoing
+
+# allow specific port access
+ufw allow 22/tcp
+-or-
+ufw allow ssh
+-or-
+ufw limit 22/tcp
+
+# reload the firewall with new settings
+ufw reload
+
+#######################################

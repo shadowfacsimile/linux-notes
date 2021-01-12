@@ -1,0 +1,32 @@
+/ Distro - Arch Linux
+/ Window Manager - bspwm (xmonad)
+/ Display Manager - lightdm
+/ Greeter - lightdm-slick-greeter
+/ Compositor - picom
+/ Shell - zsh (bash, fish)
+/ Command Prompt - Starship
+/ Terminal - Alacritty (st, Termite)
+/ Editor - Neovim
+/ Browser - Firefox
+/ Version Control - git
+/ Office - Libre Office
+/ Wallpaper Manager - nitrogen
+/ Gui Editor - notepadqq, vscode
+/ Zip - p7zip
+/ File Sync - rsync
+/ Tasks - Task warrior
+/ Status Bar - Polybar (xmobar)
+/ Run Command - dmenu
+/ Notifications - dunst
+/ File Manager - ranger (ueberzug for image preview)
+/ Image Viewer - sxiv
+/ Media Player - mpv
+/ Sound - alsa
+/ Calendar - calcurse
+/ Color Picker - colorpicker
+/ Clipboard - xclip
+/ Firewall - ufw, fail2ban
+/ IRC - weechat
+/ PDF - zathura
+/ Scheduler - crontab
+/ Torrent Client - Transmission

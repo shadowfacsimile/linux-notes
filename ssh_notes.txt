@@ -52,3 +52,8 @@ PasswordAuthentication no
 4. Copy the public key and add it to your github account SSH key list
 5. To test the connection - ssh -vT git@github.com
 6. Use the ssh link for cloning the repo
+
+# Using keychain to avoid bringing up ssh-agent and doing an ssh-add
+1. Install keychain
+2. Add an alias in .zshrc file alias kcadd='eval $(keychain --eval --quiet id_rsa_sfdo id_rsa_sfgit)'
+3. Use alias to add   
